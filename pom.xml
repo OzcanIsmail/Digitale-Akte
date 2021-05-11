@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>de.digitale-akte</groupId>
+    <artifactId>digitale-akte.automation</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>15</maven.compiler.source>
+        <maven.compiler.target>15</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <thread>2</thread>
+        <isPerCPU>false</isPerCPU>
+    </properties>
+
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+        <!-- Main dependency of Selenium to integrate with Java -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>3.141.59</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
+        <!-- WebdriverManager is used to interact with and automate browser -->
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>4.2.2</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+        <!-- Main dependency of Cucumber to integrate with Java -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>6.9.1</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version> 6.9.1</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12 -->
+        <!-- to log every steps in code to see them on report and terminal -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.30</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!--To avoid "no-operation logger implementation error" we need below dependency -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!--This plugin is related with running the test cases parallel on more then one browser at the same time to save time -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version> 3.8.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version> 3.0.0-M5</version>
+                <configuration>
+                    <!-- Enables us parallel testing on more than one Browser windows -->
+                    <parallel>methods</parallel>
+                    <threadCount>${thread}</threadCount>
+                    <perCoreThreadCount>${isPerCPU}</perCoreThreadCount>
+                    <useUnlimitedThreads>true</useUnlimitedThreads>
+                    <!-- ************************************************************ -->
+                    <runOrder>Alphabetical</runOrder>
+                    <testFailureIgnore>true</testFailureIgnore>
+                    <!-- If 1, it reruns after execution for failed test cases again: REPORT SHOWS ONLY THEIR RESULT!-->
+                    <rerunFailingTestsCount>0</rerunFailingTestsCount>
+                    <includes>
+                        <!-- *Runner means, it will include runner classes name ends with runner.-->
+                        <include>**/*Runner*.java</include>
+                        <!-- in case of failure of any scenario, just failed ones executed. FailedTestRunner is under Runners package -->
+                        <include>**/*FailedTestRunner.java</include>
+                    </includes>
+                </configuration>
+            </plugin>
+
+            <!--This plugin is for generating reports (HTML) -->
+            <plugin>
+                <groupId>net.masterthought</groupId>
+                <artifactId>maven-cucumber-reporting</artifactId>
+                <version>5.0.0</version>
+                <executions>
+                    <execution>
+                        <id>execution</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <projectName>Digitale-Akte HTML Reports</projectName>
+                            <outputDirectory>${project.build.directory}/myReports</outputDirectory>
+                            <inputDirectory>${project.build.directory}</inputDirectory>
+                            <jsonFiles>
+                                <param>**/*cucumber.json</param>
+                            </jsonFiles>
+                            <classificationFiles>
+                                <param>**/classifications/*.properties</param>
+                            </classificationFiles>
+                            <checkBuildResult>false</checkBuildResult>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
