@@ -23,7 +23,7 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>3.141.59</version>
+            <version>3.14.0</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
@@ -65,6 +65,19 @@
             <artifactId>logback-classic</artifactId>
             <version>1.2.3</version>
             <scope>test</scope>
+        </dependency>
+
+        <!--To handle a PDF document in Selenium test automation -->
+        <dependency>
+            <groupId>org.apache.pdfbox</groupId>
+            <artifactId>pdfbox</artifactId>
+            <version>2.0.23</version>
+        </dependency>
+
+        <dependency>
+            <groupId>de.redsix</groupId>
+            <artifactId>pdfcompare</artifactId>
+            <version>1.1.25</version> <!-- see current version in the maven central tag above -->
         </dependency>
     </dependencies>
 
@@ -113,7 +126,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <projectName>Digitale-Akte HTML Reports</projectName>
+                            <projectName>Digitale-Akte Project HTML Reports</projectName>
                             <outputDirectory>${project.build.directory}/myReports</outputDirectory>
                             <inputDirectory>${project.build.directory}</inputDirectory>
                             <jsonFiles>

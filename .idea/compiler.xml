@@ -7,10 +7,8 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="digitale-akte.automation" />
+        <module name="Digitale-Akte" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Digitale-Akte" target="15" />
-    </bytecodeTargetLevel>
   </component>
 </project>
