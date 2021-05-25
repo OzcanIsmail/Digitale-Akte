@@ -16,4 +16,6 @@ public class LoginPage extends BasePage {
 
   @FindBy(id = "showcontent")
   public WebElement willkommen;
+
+
 }

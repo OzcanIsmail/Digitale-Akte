@@ -83,12 +83,31 @@
 
     <build>
         <plugins>
-            <!--This plugin is related with running the test cases parallel on more then one browser at the same time to save time -->
+            <!--To create jar file of all dependencies-->
+            <plugin >
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version> 2.2-beta-5</version>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                        <manifest>
+                            <mainClass>
+                                runners.TestRunner
+                            </mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version> 3.8.0</version>
             </plugin>
+            <!--This plugin is related with running the test cases parallel on more then one browser at the same time to save time.
+            It also creates an xml report inside target folder-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>

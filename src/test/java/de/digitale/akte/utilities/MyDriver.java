@@ -78,7 +78,7 @@ public class MyDriver {
           // Run IExplorer 32 and to override some preinstallations of administrator
           InternetExplorerOptions capabilities = new InternetExplorerOptions();
           capabilities.setCapability(
-              InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+                  InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
           capabilities.setCapability("requireWindowFocus", true);
           capabilities.setCapability("browserstack.sendKeys", true);
           capabilities.setCapability(InternetExplorerDriver.NATIVE_EVENTS, false);
