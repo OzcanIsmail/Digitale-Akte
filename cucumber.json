@@ -1,0 +1,132 @@
+[
+  {
+    "line": 3,
+    "elements": [
+      {
+        "start_timestamp": "2021-05-26T12:31:43.677Z",
+        "line": 13,
+        "name": "Einloggen mit den gültigen Anmeldedaten",
+        "description": "",
+        "id": "us:0001-anmeldung-funktionalität;einloggen-mit-den-gültigen-anmeldedaten;;2",
+        "type": "scenario",
+        "keyword": "Szenariogrundriss",
+        "steps": [
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 7,
+            "name": "User ist auf Anmeldungseite",
+            "match": {},
+            "keyword": "Gegeben sei "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 8,
+            "name": "User seine \"Admin\" und \"admin\" eingibt",
+            "match": {},
+            "keyword": "Wenn "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 9,
+            "name": "klickt User Anmelden Button an",
+            "match": {},
+            "keyword": "Und "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 10,
+            "name": "soll Anmeldung erfolgreich sein",
+            "match": {},
+            "keyword": "Dann "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@all"
+          },
+          {
+            "name": "@login"
+          }
+        ]
+      }
+    ],
+    "name": "US:0001 Anmeldung Funktionalität",
+    "description": "",
+    "id": "us:0001-anmeldung-funktionalität",
+    "keyword": "Funktionalität",
+    "uri": "classpath:features/login.feature",
+    "tags": []
+  },
+  {
+    "line": 1,
+    "elements": [
+      {
+        "start_timestamp": "2021-05-26T12:31:43.725Z",
+        "line": 4,
+        "name": "Seek for Selenium documentation",
+        "description": "",
+        "id": "search-in-google;seek-for-selenium-documentation",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 5,
+            "name": "I navigate to \"https://google.de\"",
+            "match": {},
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 6,
+            "name": "I type \"Selenium\"",
+            "match": {},
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 7,
+            "name": "I press Enter",
+            "match": {},
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 999500,
+              "status": "skipped"
+            },
+            "line": 8,
+            "name": "I should be shown results including \"Selenium\"",
+            "match": {},
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@all"
+          }
+        ]
+      }
+    ],
+    "name": "Search in Google",
+    "description": "",
+    "id": "search-in-google",
+    "keyword": "Feature",
+    "uri": "classpath:features/search.feature",
+    "tags": []
+  }
+]

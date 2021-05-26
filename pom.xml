@@ -47,7 +47,7 @@
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
             <version> 6.9.1</version>
-            <scope>test</scope>
+
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12 -->
@@ -56,7 +56,7 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>1.7.30</version>
-            <scope>test</scope>
+
         </dependency>
 
         <!--To avoid "no-operation logger implementation error" we need below dependency -->
@@ -64,7 +64,7 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>1.2.3</version>
-            <scope>test</scope>
+
         </dependency>
 
         <!--To handle a PDF document in Selenium test automation -->
@@ -83,21 +83,18 @@
 
     <build>
         <plugins>
-            <!--To create jar file of all dependencies-->
+            <!--To create jar file with all dependencies-->
             <plugin >
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version> 2.2-beta-5</version>
                 <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>de.digitale.akte.runners.TestRunner</mainClass>
+                        </manifest>
+                    </archive>
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
-                    <archive>
-                        <manifest>
-                            <mainClass>
-                                runners.TestRunner
-                            </mainClass>
-                        </manifest>
-                    </archive>
                 </configuration>
             </plugin>
 
@@ -106,6 +103,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version> 3.8.0</version>
             </plugin>
+
             <!--This plugin is related with running the test cases parallel on more then one browser at the same time to save time.
             It also creates an xml report inside target folder-->
             <plugin>
