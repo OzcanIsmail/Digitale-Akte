@@ -1,8 +1,8 @@
 #language: de
-
+@all
 Funktionalität: US:0001 Anmeldung Funktionalität
 
-  @all @login
+   @login
   Szenariogrundriss: Einloggen mit den gültigen Anmeldedaten
     Gegeben sei User ist auf Anmeldungseite
     Wenn User seine "<Username>" und "<Password>" eingibt

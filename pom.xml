@@ -85,6 +85,7 @@
         <plugins>
             <!--To create jar file with all dependencies-->
             <plugin >
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
                     <archive>

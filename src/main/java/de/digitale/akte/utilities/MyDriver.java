@@ -33,16 +33,16 @@ public class MyDriver {
       // if we pass the driver from terminal then use that one
       // if we do not pass the driver from terminal then use the one properties file
 
-//      logger.info("===============================================================");
+      logger.info("===============================================================");
 //      logger.info("|          Environment : " + ConfigurationReader.getProperty("env"));
-//      logger.info("|          Operating System : " + System.getProperty("os.name"));
+      logger.info("|          Operating System : " + System.getProperty("os.name"));
 //      logger.info("|          Browser: " + ConfigurationReader.getProperty("browser"));
-//      logger.info("===============================================================\n");
+      logger.info("===============================================================\n");
 
       String browser =
           System.getProperty("browser") != null
               ? browser = System.getProperty("browser")
-              : ConfigurationReader.getProperty("browser");
+              : "ie"; //ConfigurationReader.getProperty("browser");
 
       switch (browser) {
         case "chrome":

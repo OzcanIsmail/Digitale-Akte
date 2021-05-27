@@ -1,3 +1,6 @@
 target/
 
 #mvn clean package assembly:single     --> creates jar file with dependencies under target folder
+
+#In followin command; Browser defining comes before the name of jar file!!! It is used to call from terminal
+#java -Dbrowser=chrome -jar cucumber-test-jar-with-dependencies.jar --glue cucumber/stepdefinition --plugin pretty classpath:features/MyTestFeature.feature

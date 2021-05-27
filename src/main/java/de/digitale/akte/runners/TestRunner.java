@@ -1,34 +1,26 @@
 package de.digitale.akte.runners;
 
-import cucumber.api.cli.Main;
+import io.cucumber.core.cli.Main;
 
-@SuppressWarnings("deprecation")
 public final class TestRunner {
 
-    //    private static String[] defaultOptions = {
-//            "--glue", "stepdefinitions",
-//            "--feature", "classpath:features/",
-//            "--plugin", "pretty",
-//            "--plugin", "json:cucumber.json",
-//    };
-//    public static void main(String[] args) {
-//        SecurityManager manager = new IgnoreExitCall();
-//        System.setSecurityManager(manager);
-//        try {
-//            cucumber.api.cli.Main.main(args);
-//        } catch (SecurityException securityException) {
-//            System.out.println("Ignore exit");
-//        }
-//        //Do some other stuff like reporting logic
-//    }
     public static void main(String[] args) {
-        Main.main(new String[]{
-                "-g",
-                "de/digitale/akte/stepDefs",
-                "classpath:features",
-                "-p", "pretty",
-                "-m"}
-        );
+
+        SecurityManager manager = new IgnoreExitCall();
+        System.setSecurityManager(manager);
+        try {
+            Main.main(
+                    "classpath:features",
+                    "-t", "@login",
+                    "-g", "de.digitale.akte.stepDefs",
+                    "-p", "pretty",
+                    "-p", "json:target/cucumber-reports/Cucumber.json",
+                    "-p", "html:target/myReports/default-html-reports",
+                    "-m");
+        } catch (SecurityException securityException) {
+            System.out.println("Ignore exit");
+        }
+        //use that command in gitignore file to run jar file from command line
     }
 }
 
