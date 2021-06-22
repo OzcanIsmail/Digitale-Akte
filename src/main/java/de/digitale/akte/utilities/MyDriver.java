@@ -51,7 +51,7 @@ public class MyDriver {
           break;
         case "chrome-headless":
           WebDriverManager.chromedriver().setup();
-          // In case of any locate problem with headless chrome
+          // In case of any locating problem with headless chrome
           ChromeOptions options = new ChromeOptions();
           options.setHeadless(true);
           options.addArguments("--window-size=1920,1080");
@@ -77,12 +77,15 @@ public class MyDriver {
             throw new WebDriverException("Your OS doesn't support Internet Explorer");
           // Run IExplorer 32 and to override some preinstallations of administrator
           InternetExplorerOptions capabilities = new InternetExplorerOptions();
-          capabilities.setCapability(
-                  InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+          capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
           capabilities.setCapability("requireWindowFocus", true);
           capabilities.setCapability("browserstack.sendKeys", true);
           capabilities.setCapability(InternetExplorerDriver.NATIVE_EVENTS, false);
-          File file = new File(System.getProperty("user.dir") + "\\IEDriverServer32.exe");
+          capabilities.setCapability("ignoreProtectedModeSettings",true);
+          capabilities.setCapability("ignoreZoomSetting",true);
+          capabilities.setCapability("nativeEvents",false);
+          capabilities.setCapability("acceptSslCerts",true);
+          File file = new File(System.getProperty("user.dir") + "\\IEDriverServer64.exe");
           WebDriverManager.iedriver().setup();
           driverPool.set(new InternetExplorerDriver(capabilities));
           break;

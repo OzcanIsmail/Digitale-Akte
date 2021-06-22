@@ -82,6 +82,11 @@
     </dependencies>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
         <plugins>
             <!--To create jar file with all dependencies-->
             <plugin >

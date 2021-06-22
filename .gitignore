@@ -1,4 +1,5 @@
 target/
+out/
 
 #mvn clean package assembly:single     --> creates jar file with dependencies under target folder
 
